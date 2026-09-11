@@ -1,18 +1,55 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Sudoku Game</title>
-  <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-  <h1>Sudoku Game</h1>
-  <div id="sudoku-board"></div>
-  <div class="controls">
-    <button id="new-game">New Game</button>
-    <button id="check-solution">Check Solution</button>
-    <span id="message"></span>
-  </div>
-  <script src="/static/main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <h1>Sudoku Game</h1>
+    <div class="game-toolbar">
+      <button id="theme-toggle" type="button" aria-pressed="false">
+        Dark mode
+      </button>
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <span id="timer">Time: 00:00</span>
+    </div>
+    <div id="sudoku-board"></div>
+    <div class="controls">
+      <button id="new-game">New Game</button>
+      <button id="hint">Hint</button>
+      <span id="hint-count">Hints: 0</span>
+      <button id="check-solution">Check Solution</button>
+      <span id="message"></span>
+    </div>
+    <section class="leaderboard-section" aria-labelledby="leaderboard-title">
+      <h2 id="leaderboard-title">Top 10</h2>
+      <div class="leaderboard-table-wrapper">
+        <table id="leaderboard">
+          <caption class="visually-hidden">
+            Top 10 Sudoku scores
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Rank</th>
+              <th scope="col">Name</th>
+              <th scope="col">Time</th>
+              <th scope="col">Level</th>
+              <th scope="col">Hints</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p id="leaderboard-empty" class="leaderboard-empty">
+          No completed games yet.
+        </p>
+      </div>
+    </section>
+    <script src="/static/main.js"></script>
+  </body>
 </html>
